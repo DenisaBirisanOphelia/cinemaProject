@@ -1,21 +1,23 @@
 package com.example.cinemaProject.service;
 
+import com.example.cinemaProject.DTO.BiletDTO;
+import com.example.cinemaProject.DTO.CosCumparaturiDTO;
 import com.example.cinemaProject.model.Bilet;
-import com.example.cinemaProject.model.CosCumparaturi;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Component
 public interface CosCumparaturiService {
-    //prima iarasi nu o folosesc, ca pun sa mi se adauge practic din Bilet direct
-    //toata smecheria asta o fac ca sa pot sa propag modificarile prin tabele natural si automat
-    CosCumparaturi saveCosCumparaturi(CosCumparaturi cosCumparaturi);
-    //astea 3 le folosesc
-    //asta nu, ca se face automat
-    void addBiletToCosCumparaturi(Bilet bilet);
-    //asta nu acu
-    //void removeBletFromCosCumparaturi(Bilet b);
+    CosCumparaturiDTO addBiletToCosCumparaturi(Long id, String nume, String prenume);
+
+    //asta nu e deloc utila
     List<Bilet> findBileteUnderASUm(int sum);
-    void deleteAllFromCosCumparaturi();
+    List<CosCumparaturiDTO> deleteAllFromCosCumparaturi(String nume, String prenume);
+
+    CosCumparaturiDTO removeBiletFromCosCumparaturi(String numeFilm, String regizor,String loc, String nume, String prenume);
+
+    List<CosCumparaturiDTO> findAll();
+
+    List<BiletDTO> getAllBilete();
 }

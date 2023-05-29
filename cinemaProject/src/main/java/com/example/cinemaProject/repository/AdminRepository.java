@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface AdminRepository extends CrudRepository<Admin,Long> {
+    Admin findFirstByNumeAndPrenumeAndPassword(String nume, String prenume, String password);
 }

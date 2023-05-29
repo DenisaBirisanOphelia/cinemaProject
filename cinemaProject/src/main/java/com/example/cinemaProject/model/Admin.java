@@ -22,8 +22,8 @@ public class Admin  extends User{
     @JoinColumn(name="admin_cu_loc_sa")
     private LocatieFizica locatieSubAdministratie;
 
-    public Admin(Long id, String nume, String prenume, int age) {
-        super(id, nume, prenume, age);
+    public Admin(Long id, String nume, String prenume,String pass,String email, int age) {
+        super(id, nume, prenume,pass,email, age);
     }
 
     public Admin() {

@@ -1,8 +1,13 @@
 package com.example.cinemaProject.service.Implementare;
 
+import com.example.cinemaProject.DTO.MovieDTO;
+import com.example.cinemaProject.DTO.WatchListDTO;
+import com.example.cinemaProject.mapper.MovieMapper;
+import com.example.cinemaProject.mapper.WatchListMapper;
 import com.example.cinemaProject.model.Client;
 import com.example.cinemaProject.model.Movie;
 import com.example.cinemaProject.model.WatchList;
+import com.example.cinemaProject.repository.ClientRepository;
 import com.example.cinemaProject.repository.MovieRepository;
 import com.example.cinemaProject.repository.WatchListRepository;
 import com.example.cinemaProject.service.WatchListService;
@@ -17,7 +22,12 @@ import java.util.*;
 public class WatchListImplementare implements WatchListService {
     @Autowired
     private WatchListRepository watchListRepository;
-    //daca as pune 2 repo-uri as viola principiul  single responsability din SOLID si nu eok!!
+
+    @Autowired
+    private MovieRepository movieRepository;
+
+    @Autowired
+    private ClientRepository clientRepository;
 
 
 
@@ -56,28 +66,69 @@ public class WatchListImplementare implements WatchListService {
 //        }
 //    }
 //
-//    @Override
-//    public WatchList saveMovieInWatchListForClient(Client client, Movie film) {
-//        //aici fac validarea sa nu poata sa fie adaugat in watchlist un film ce nu e in
-//        //SAU O FACE AUTOMAT DIN CAUZA RELATIILOR????????
-//        //tabelul de movies
-////         if(movieRepository.findById(film.getId())!=null)
-////         {
-//           WatchList watchList=watchListRepository.findWatchListByClient(client);
-//           if(watchList!=null) {
-//               Set<Movie> noua = new HashSet<Movie>();
-//               noua = watchList.getListaFilmeDeVazut();
-//               noua.add(film);
-//               watchList.setListaFilmeDeVazut(noua);
-//               watchListRepository.save(watchList);
-//               //noua.stream().forEach(film1-> System.out.println(film1.getName()));
-//               return watchList;
-//           }
-//           else return null;
-////         }
-////         else return null;  }
-////         else return null;
-//    }
+    @Override
+    public WatchListDTO saveMovieInWatchListForClient(String nume,String regizor,String nume1,
+            String prenume) {
+        //aici fac validarea sa nu poata sa fie adaugat in watchlist un film ce nu e in
+        //SAU O FACE AUTOMAT DIN CAUZA RELATIILOR????????
+        //tabelul de movies
+
+          Movie m=movieRepository.findFirstByNameAndRegizor(nume,regizor);
+          if(m==null) return null;
+
+          Client c=clientRepository.findFirstByNumeAndPrenume(nume1,prenume);
+
+           WatchList watchList=watchListRepository.findWatchListByClient(c);
+           if(watchList==null) watchList=new WatchList();
+
+               Set<Movie> noua = watchList.getListaFilmeDeVazut();
+               if(noua==null)  noua = new HashSet<Movie>();
+               noua.add(m);
+               watchList.setListaFilmeDeVazut(noua);
+               watchListRepository.save(watchList);
+               m.setWatchList(watchList);
+               movieRepository.save(m);
+
+            for (Movie mySet : watchList.getListaFilmeDeVazut()) {
+            System.out.println(mySet.getName());
+        }
+               c.setListaVizionate(watchList);
+               clientRepository.save(c);
+               //noua.stream().forEach(film1-> System.out.println(film1.getName()));
+               return WatchListMapper.mapModelToDto(watchList);
+    }
+
+    @Override
+    public List<MovieDTO> getMoviesForClient(String nume, String prenume) {
+        Client c=clientRepository.findFirstByNumeAndPrenume(nume,prenume);
+        if(c==null) return null;
+        WatchList watchList=watchListRepository.findWatchListByClient(c);
+        if(watchList==null) return null;
+        List<MovieDTO> lista=new ArrayList<>();
+        for(Movie m:watchList.getListaFilmeDeVazut())
+        {
+            lista.add(MovieMapper.mapModelToDto(m));
+        }
+        return lista;
+    }
+
+    @Override
+    public void deleteMovieFromWatchList(String nume, String regizor, String nume1, String prenume) {
+        Movie m=movieRepository.findFirstByNameAndRegizor(nume,regizor);
+        if(m==null) return;
+        Client c=clientRepository.findFirstByNumeAndPrenume(nume1,prenume);
+        if(c==null) return;
+        WatchList watchList=watchListRepository.findWatchListByClient(c);
+        if(watchList==null) return;
+        Set<Movie> lista=watchList.getListaFilmeDeVazut();
+        if(lista==null) return;
+        lista.remove(m);
+        watchList.setListaFilmeDeVazut(lista);
+        m.setWatchList(null);
+        movieRepository.save(m);
+        watchListRepository.save(watchList);
+
+    }
 
     @Override
     public List<WatchList> findByClient(Client client) {
@@ -139,4 +190,8 @@ public class WatchListImplementare implements WatchListService {
         }
 
     }
+
+
+
+
 }

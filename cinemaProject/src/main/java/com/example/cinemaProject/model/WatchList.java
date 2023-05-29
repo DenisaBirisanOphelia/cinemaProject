@@ -7,6 +7,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
@@ -23,9 +24,9 @@ public class WatchList {
     private Long id;
     private String numeWatchList;
 
-//    @OneToOne(mappedBy = "listaVizionate",fetch = FetchType.EAGER)
-//    @JsonManagedReference
-//    private Client client;
+    @OneToOne(mappedBy = "listaVizionate",fetch = FetchType.EAGER)
+    @JsonManagedReference
+    private Client client;
 
     @OneToMany(mappedBy = "watchList",fetch = FetchType.EAGER,orphanRemoval = true,cascade = CascadeType.REMOVE)
     private Set<Movie> listaFilmeDeVazut;

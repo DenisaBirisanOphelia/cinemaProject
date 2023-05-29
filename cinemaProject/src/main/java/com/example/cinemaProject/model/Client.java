@@ -7,6 +7,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,19 +18,31 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+
 public class Client extends User {
+    private Boolean confirmedClient=false;
+
+    private Boolean loggedClient=false;
+
 
     @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @JoinColumn
     private List<Movie> movies;
 
-//    @OneToOne(cascade = CascadeType.ALL)
-//    @JsonManagedReference
-//    @JoinColumn(name="client_cu_lista_vizionate")
-//    private WatchList listaVizionate;
+    @OneToMany(cascade=CascadeType.ALL)
+    @JoinColumn(name="fk_client_to_bilet")
+    private List<CosCumparaturi> cosCumparaturi;
 
-    public Client(Long id, String nume, String prenume, int age, List<Movie> movies) {
-        super(id, nume, prenume, age);
+    @OneToOne(cascade = CascadeType.ALL)
+    @JsonManagedReference
+    @JoinColumn(name="client_cu_lista_vizionate")
+    private WatchList listaVizionate;
+
+    @OneToMany(mappedBy = "clientulCeADatReview",cascade = CascadeType.ALL,fetch=FetchType.EAGER)
+    private List<Review> listaReviews;
+
+    public Client(Long id, String nume, String prenume,String password, int age,String email, List<Movie> movies) {
+        super(id, nume, prenume,password,email, age);
         this.movies = new ArrayList<Movie>();
         //this.listaVizionate = new WatchList();
     }

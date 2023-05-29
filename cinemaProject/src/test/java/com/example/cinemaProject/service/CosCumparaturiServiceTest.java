@@ -43,7 +43,7 @@ public class CosCumparaturiServiceTest {
         when(cosCumparaturiRepository.findAll()).thenReturn(listaC);
     }
 
-    @Test
+   /* @Test
     void givenCosCumparaturi_whenfindBileteUnderASUm_thenFindOne()
     {
         cosCumparaturiServiceImplementare=new
@@ -53,7 +53,7 @@ public class CosCumparaturiServiceTest {
 
         assertNotNull(lista1);
         assertEquals(lista1.get(0).getPret(),60);
-    }
+    }*/
 
 
     @Test

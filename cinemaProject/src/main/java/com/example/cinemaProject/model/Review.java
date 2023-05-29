@@ -21,4 +21,8 @@ public class Review {
    @ManyToOne(fetch = FetchType.EAGER)
    @JoinColumn(name="fk_movie_reviws_sale")
    private Movie filmReviewed;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="fk_review_of_client")
+    private Client clientulCeADatReview;
 }

@@ -16,14 +16,13 @@ public class Bilet {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @OneToOne(mappedBy = "biletPtFilm",fetch = FetchType.EAGER,
-            cascade = CascadeType.REMOVE)
+    @ManyToOne(fetch=FetchType.EAGER)
     private Movie filmDinBilet;
 
     private int pret=0;
-    private int locInSala=-1;
+    private String locInSala="--";
 
-    @ManyToOne(fetch=FetchType.EAGER,cascade = CascadeType.PERSIST)
+    @ManyToOne(fetch=FetchType.EAGER,cascade = CascadeType.REMOVE)
     @JoinColumn(name="fk_bilet_to_cosCumparaturi")
-    private CosCumparaturi cosCumparaturi=new CosCumparaturi();
+    private CosCumparaturi cosCumparaturi;
 }

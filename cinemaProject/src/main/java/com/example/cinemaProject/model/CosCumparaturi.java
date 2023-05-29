@@ -22,7 +22,13 @@ public class CosCumparaturi {
     private int pretTotal;
 
     @OneToMany(mappedBy = "cosCumparaturi",fetch=FetchType.EAGER)
-    private List<Bilet> bileteDinCosCumparaturi=new ArrayList<>();
+    private List<Bilet> bileteDinCosCumparaturi;
+
+    //cu tipul asta de cascades,  cand sterg cvdin cosul de cumparaturi, nu se propaga stergerea
+    //si in client ca asta era bug u din front end
+    @ManyToOne(fetch = FetchType.EAGER,
+            cascade = {CascadeType.PERSIST,CascadeType.MERGE})
+    private Client client;
 
     public int getPretTotal() {
         return pretTotal;
@@ -32,15 +38,5 @@ public class CosCumparaturi {
         this.pretTotal = pretTotal;
     }
 
-    public int calculeazaTotal()
-    { int S=0;
-        if (!this.getBileteDinCosCumparaturi().isEmpty()) {
-            for (Bilet b : this.getBileteDinCosCumparaturi()) {
-                if (b!=null)
-                S += b.getPret();
-            }
-        }
-        return S;
-    }
 
 }

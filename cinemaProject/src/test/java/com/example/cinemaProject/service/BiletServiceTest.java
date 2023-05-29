@@ -38,7 +38,7 @@ public class BiletServiceTest {
         m.setName(EXISTENT_MOVIE);
         bilet1.setFilmDinBilet(m);
         bilet1.setPret(45);
-        bilet1.setLocInSala(113);
+     //   bilet1.setLocInSala(113);
         when(biletRepository.findByPretAndFilmDinBiletAndLocInSala(
                 45,m,113)).thenReturn( bilet1);
     }
@@ -78,7 +78,7 @@ public class BiletServiceTest {
         m.setName(EXISTENT_MOVIE);
         bilet1.setFilmDinBilet(m);
         bilet1.setPret(45);
-        bilet1.setLocInSala(113);
+      //  bilet1.setLocInSala(113);
         biletServiceImplementare=new BiletServiceImplementare(biletRepository);
 
         biletServiceImplementare.deleteBilet(bilet1);
@@ -91,7 +91,7 @@ public class BiletServiceTest {
         m.setName(EXISTENT_MOVIE);
         bilet1.setFilmDinBilet(m);
         bilet1.setPret(45);
-        bilet1.setLocInSala(113);
+       // bilet1.setLocInSala(113);
 
         Exception excp=assertThrows(NullPointerException.class,()->
         {
@@ -106,7 +106,7 @@ public class BiletServiceTest {
         m.setName(EXISTENT_MOVIE);
         bilet1.setFilmDinBilet(m);
         bilet1.setPret(45);
-        bilet1.setLocInSala(113);
+        ///bilet1.setLocInSala(113);
         when(biletRepository.findById(bilet1.getId())).thenReturn(Optional.ofNullable(bilet1));
 
         biletServiceImplementare=new BiletServiceImplementare(biletRepository);

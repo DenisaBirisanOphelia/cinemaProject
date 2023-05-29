@@ -1,5 +1,7 @@
 package com.example.cinemaProject.service;
 
+import com.example.cinemaProject.DTO.MovieDTO;
+import com.example.cinemaProject.DTO.WatchListDTO;
 import com.example.cinemaProject.model.Client;
 import com.example.cinemaProject.model.Movie;
 import com.example.cinemaProject.model.WatchList;
@@ -20,4 +22,11 @@ public interface WatchListService {
     WatchList updateWatchList(WatchList watchList,Movie filmDeInlocuit,
                               Movie filmCuCareSeInlocuieste);
     void deleteWatchList(Client client);
+
+    public WatchListDTO saveMovieInWatchListForClient(String nume,String regizor,String nume1,
+                                                   String prenume);
+
+    List<MovieDTO> getMoviesForClient(String nume, String prenume);
+
+    void deleteMovieFromWatchList(String nume, String regizor, String nume1, String prenume);
 }

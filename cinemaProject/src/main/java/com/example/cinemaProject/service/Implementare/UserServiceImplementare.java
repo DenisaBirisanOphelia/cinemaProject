@@ -8,7 +8,13 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.File;
 import java.util.List;
+import java.util.Optional;
+
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
 
 @Service
 @Transactional
@@ -42,4 +48,6 @@ public class UserServiceImplementare implements UserService {
     public void deleteUser(User user) {
         userRepository.delete(user);
     }
+
+
 }

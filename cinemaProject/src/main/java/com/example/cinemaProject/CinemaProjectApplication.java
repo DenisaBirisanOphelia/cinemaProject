@@ -10,9 +10,11 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import javax.swing.*;
 import java.awt.*;
@@ -24,6 +26,8 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @SpringBootApplication
+@EntityScan
+@EnableJpaRepositories
 public class CinemaProjectApplication  {
 	public static void main(String[] args) {
 		SpringApplication.run(CinemaProjectApplication.class, args);
@@ -42,21 +46,29 @@ public class CinemaProjectApplication  {
    //ZONA UNDE IMI CREEZ OBIECTE PENTRU A PUTEA TESTA OPERATIILE
 			//LocatieFizica locatie1=new LocatieFizica(1L,"Cluj-Napoca","Ceahlau",72,
 				//	null,null);
-			//Admin admin1=new Admin(null,null);
-			Movie m=new Movie();
-			m.setName("Coherence");
-			Movie m2=new Movie();
-			m2.setName("Parasite");
+//			//Admin admin1=new Admin(null,null);
+//			Movie m=new Movie();
+//			m.setName("Coherence");
+//			Movie m2=new Movie();
+//			m2.setName("Parasite");
+//			m2.setRegizor("Allain Deloin");
+//			m.setRegizor("Scorsese");
+//
+//			Movie m3=new Movie();
+//			m3.setName("The wolf of wall street");
+//			m3.setRegizor("Tommy Hilfiger");
+
 
 			//PT TABELUL MOVIE
-			MovieServiceImplementare movieServiceImplementare=new
-					MovieServiceImplementare(movieRepository);
-			movieServiceImplementare.saveMovie(m);
-			movieServiceImplementare.saveMovie(m2);
-			System.out.println(movieRepository.findFirstByName("Coherence").getName());
-			movieServiceImplementare.updateMovie(m,"Connahan");
+//			MovieServiceImplementare movieServiceImplementare=new
+//					MovieServiceImplementare(movieRepository);
+//			movieServiceImplementare.saveMovie(m3);
+//			movieServiceImplementare.saveMovie(m);
+//			movieServiceImplementare.saveMovie(m2);
+			//System.out.println(movieRepository.findFirstByName("Coherence").getName());
+			//movieServiceImplementare.updateMovie(m,"Connahan");
 			//movieServiceImplementare.deleteMovie("Parasite");
-
+/*
 			//PT TABELUL REVIEW
 			ReviewServiceImplementare reviewServiceImplementare=new
 					ReviewServiceImplementare(reviewRepository);
@@ -208,16 +220,65 @@ public class CinemaProjectApplication  {
 			cosCumparaturiServiceImplementare.findBileteUnderASUm(90).forEach(bilet->
 					System.out.println("Pretul pentru biletul la filmul '"+bilet.getFilmDinBilet().
 							getName()+ "' este: "+bilet.getPret()));
-/*
+*/
 			//PT TABELUL ADMIN(celelalte op funct exact la fel ca pt client, fiind cu
 			// aceeasi impl de user), aici am vrut doar sa arat ca merge okay si insereaza adminu
 			//unde trebuie
-			Admin admin1=new Admin();
-			admin1.setAge(45);
-			admin1.setNume("Mirelescu");
-			admin1.setPrenume("Mirel");
-			userServiceImplementare.saveUser(admin1);
-*/
+			UserServiceImplementare userServiceImplementare=new UserServiceImplementare(userRepository);
+			Client client1=new Client();
+			client1.setNume("Kio");
+			client1.setPrenume("Mirel");
+			client1.setPassword("emilia");
+			client1.setEmail("a");
+			client1.setAge(23);
+			client1.setConfirmedClient(true);
+			client1.setLoggedClient(true);
+			userServiceImplementare.saveUser(client1);
+			ClientServiceImplementare clientServiceImplementare=new ClientServiceImplementare(clientRepository);
+			Client da=clientRepository.findFirstByNumeAndPrenume("Kio","Mirel");
+			System.out.println(da.getNume());
+			clientServiceImplementare.findByNumePrenume("Kio","Mirel");
+
+			System.out.println(da.getNume());
+
+
+			Admin a=new Admin();
+			a.setNume("d");
+			a.setPrenume("b");
+			a.setPassword("ghici");
+			a.setAge(22);
+			a.setEmail("denisaopehali2000@yahoo.com");
+			userServiceImplementare.saveUser(a);
+
+
+//			//am creat un bilet
+//			Bilet b=new Bilet();
+//			b.setLocInSala("1a");
+//			b.setPret(999);
+//
+//			biletRepository.save(b);
+//
+			CosCumparaturiServiceImplementare cosCumparaturiServiceImplementare=
+					new CosCumparaturiServiceImplementare(cosCumparaturiRepository,clientRepository,
+							biletRepository);
+//
+//			cosCumparaturiServiceImplementare.addBiletToCosCumparaturi(b.getId(),"Kio","Mirel");
+//
+//       Bilet b =new Bilet();
+//	   b.setLocInSala("1A");
+//
+//			Bilet b1 =new Bilet();
+//			b1.setLocInSala("1B");
+//
+//
+//			b.setFilmDinBilet(m);
+//			b1.setFilmDinBilet(m);
+//			biletRepository.save(b);
+//			biletRepository.save(b1);
+
+			//cosCumparaturiServiceImplementare.addBiletToCosCumparaturi(b.getId(),"Kio","Mirel");
+			//cosCumparaturiServiceImplementare.addBiletToCosCumparaturi(b1.getId(),"Kio","Mirel");
+
 		};
 	}
 }

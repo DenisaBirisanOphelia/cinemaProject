@@ -12,4 +12,5 @@ public interface UserService {
     List<User> findByAge(int nr);
     User updateUser(User user,int newAge);
     void deleteUser(User user);
+
 }

@@ -1,11 +1,17 @@
 package com.example.cinemaProject.service;
 
+import com.example.cinemaProject.DTO.BiletDTO;
+import com.example.cinemaProject.DTO.MovieDTO;
 import com.example.cinemaProject.model.Bilet;
 import com.example.cinemaProject.model.CosCumparaturi;
 import com.example.cinemaProject.model.Movie;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Component
+@Service
 public interface BiletService {
     //nu fol asta ca inserez prin Movie
     Bilet saveBilet(Bilet bilet);
@@ -20,5 +26,9 @@ public interface BiletService {
     //dar tot din movie repo deci niste asta nu o folosesc
     void deleteBilet(Bilet bilet);
 
+    BiletDTO createBiletByNameAndRegizor(String nume, String locInSala, int pret);
 
+    List<BiletDTO> findBileteByNumeFilm(String nume);
+
+    MovieDTO getMovieFromBilet(Long id);
 }
