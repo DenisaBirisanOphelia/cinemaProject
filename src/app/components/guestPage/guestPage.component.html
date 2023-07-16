@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html Lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link rel="stylesheet" href="guestPage.component.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+<div class="box">
+  <div class="menuItem">
+    <a href='mainPage'>Main Page</a>
+    <i></i>
+  </div>
+  <div class="menuItem">
+    <a href="#">Reviews</a>
+    <i></i>
+  </div>
+  <div class="menuItem">
+    <a href="#">Where we at</a>
+    <i></i>
+  </div>
+  <div class="icons">
+    <button  mat-icon-button  class="butonel" #myButton id="search">
+      <mat-icon>search</mat-icon>
+    </button>
+    <button  mat-icon-button  class="butonel" #myButton id="filter">
+      <mat-icon>filter_list</mat-icon>
+    </button>
+    <span   class="nrItems" id="nrItems">{{bileteList.length}}</span>
+    <button  mat-icon-button (click)="logIn()"  class="butonel">
+      <mat-icon>fingerprint</mat-icon>
+    </button>
+  </div>
+</div>
+<div  *ngIf="images && images.length>0" class="carousel-container">
+  <img *ngFor="let image of images; let i = index"
+       [ngClass]="{ 'image-active': selectedIndex === i }"
+       [src]="image.Imagesrc" [alt]="image.imageAlt">
+  <div *ngIf="indicators" class="carousel-dot-container">
+    <span  *ngFor="let dot of images; let i=index" class="dot"
+           [ngClass]="{'active':selectedIndex==i}"
+           (click)="selectIndex(i)">
+    </span>
+  </div>
+  <button *ngIf="controls"  class="btn-carousel btn-prev">
+    <i class="fas fa-arrow-circle-left icon-carousel icon-prev"
+       (click)="onPrevClick()"></i>
+  </button>
+
+  <button *ngIf="controls"  class="btn-carousel btn-next">
+    <i class="fas fa-arrow-circle-right icon-carousel icon-next"
+       (click)="onNextClick()"></i>
+  </button>
+</div>
+<div class="searchBox" id="filterBox">
+  <form [formGroup]="searchForm" *ngIf="searchForm">
+    <h2>Search away</h2>
+    <select class="select" formControlName="sortingOrder" [(ngModel)]="sortingOrder" (change)="selected()" >
+      <option *ngFor="let item of data" [ngValue]="item">{{item}}</option>
+    </select>
+  </form>
+  <form [formGroup]="filterForm" *ngIf="filterForm">
+    <select class="select" formControlName="filterMainOption" [(ngModel)]="filterMainOption" (change)="selected()" >
+      <option *ngFor="let item of filterMainData" [ngValue]="item">{{item}}</option>
+    </select>
+  </form>
+</div>
+<div class="searchBox2" id="searchBox">
+  <form [formGroup]="filterFormReal" *ngIf="filterFormReal">
+    <h2> Choose the ones you long for </h2>
+    <select class="select2" formControlName="filterOption" [(ngModel)]="filterOption" (change)="selected()" >
+      <option *ngFor="let item of filterMainData" [ngValue]="item">{{item}}</option>
+    </select>
+    <div class="inputBox" [formGroup]="filterFormReal" *ngIf="filterFormReal">
+      <input  formControlName="word"  [(ngModel)]="word" type="text"  required="required" />
+      <span>Choice </span>
+      <i></i>
+    </div>
+    <input type="submit"  id="pls" (click)=search()  value="Search">
+  </form>
+</div>
+<div class="lista">
+  <mat-list>
+    <mat-list-item  class="movieBox"*ngFor="let movie of movieList">
+      <div mat-line class="movieBox-img"><img src="assets/{{movie.imageSrc}}"></div>
+      <div class="movie-details">
+        <div mat-line class="name" >{{movie.name}}</div>
+        <div mat-line class="reg">Directed by {{movie.regizor}}</div>
+        <div mat-line class="rating" *ngIf="movie.rating!=undefined">
+          <ng-container *ngFor="let i of [].constructor(movie.rating)">
+            <i class="fa-solid fa-star"></i>
+          </ng-container>
+          <ng-container *ngFor="let i of [].constructor(5-movie.rating)">
+            <i class="fa-regular fa-star"></i>
+          </ng-container>
+        </div>
+        <div mat-line class="date">Date:{{movie.data}}</div>
+        <div mat-line class="pret">Pret:  {{movie.pret}}$$</div>
+      </div>
+
+    </mat-list-item>
+  </mat-list>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+<form [formGroup]="FormData" *ngIf="FormData"  ><div>
+        <label >EmailAddress</label>
+        <input type="email" name="EmailAddress"  [(ngModel)]="EmailAddress"
+               placeholder="Enter email" formControlName="EmailAddress">
+      </div>
+        <div>
+          <label >Body</label>
+          <textarea formControlName="Body" [(ngModel)]="Body" name="Body">
+</textarea>
+        </div>
+        <button type="submit" (click)="onSubmit(FormData)"   >Submit</button>
+</form>

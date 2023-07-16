@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html Lang="en">
+<head>
+  <script>
+    // Find the button element by its ID*const
+    loginButton = document.getElementById('pls');
+    //const pop=document.getElementById("pls");
+    let x='Denisa';
+    // Add a click event listener to the button
+    loginButton.addEventListener('click',function()
+    {alert('da')});
+  </script>
+   <meta charset="UTF-8">
+  <title>Animated login form </title>
+  <link rel="stylesheet" href="first-page.component.css">
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+</head>
+<body>
+
+<div class="box">
+  <span class="borderLine"> </span>
+  <form [formGroup]="loginForm" *ngIf="loginForm">
+    <h2>Log in</h2>
+    <div class="inputBox">
+      <input  id="username" formControlName="username"   [(ngModel)]="username" type="text"  required="required">
+      <span> Nume </span>
+      <mat-error *ngIf="loginForm.controls['username']?.touched && loginForm.controls['username']?.invalid">
+        <span *ngIf="loginForm.controls['username']?.errors?.['required']" class="nok"><br>Required field</span>
+      </mat-error>
+      <i></i>
+    </div>
+    <div class="inputBox">
+      <input  id="userprenume" formControlName="userprenume"  [(ngModel)]="userprenume" type="text"  required="required">
+      <span> Prenume </span>
+      <mat-error *ngIf="loginForm.controls['userprenume']?.touched && loginForm.controls['userprenume']?.invalid">
+        <span *ngIf="loginForm.controls['userprenume']?.errors?.['required']" class="nok"><br>Required field</span>
+      </mat-error>
+      <i></i>
+    </div>
+    <div class="inputBox">
+      <input  id="password" formControlName="password"  [(ngModel)]="password" type="password"  required="required">
+      <span>Password </span>
+      <mat-error *ngIf="loginForm.controls['password']?.touched && loginForm.controls['password']?.invalid">
+        <span *ngIf="loginForm.controls['password']?.errors?.['required']" class="nok"><br>Required field</span>
+      </mat-error>
+      <i></i>
+    </div>
+  <select class="select" formControlName="userChoice" [(ngModel)]="userChoice" (change)="selected()" >
+    <option *ngFor="let item of data" [ngValue]="item">{{item}}</option>
+  </select>
+    <div class="links">
+      <a href="recoverpassword"> Forgot password?</a>
+      <a href="signup"> Signup? </a>
+    </div>
+
+    <input type="submit"  id="pls" (click)=login()  value="Login">
+  </form>
+</div>
+<div class="popup" id="popup">
+  <img src="assets/favicon.png" alt="cant'T">
+  <h2>We're sorry...</h2>
+  <p>You have entered  <br> &#160; &#160; &#160; something wrong :(</p>
+  <input type="submit"  onClick="closePopup();" value="Ok">
+</div>
+
+</body>
+</html>

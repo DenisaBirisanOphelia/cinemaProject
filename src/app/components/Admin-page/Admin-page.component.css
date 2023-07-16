@@ -1,0 +1,591 @@
+body
+{
+  margin:0;
+  padding:0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background-color: #080808;
+  height: 200vh;
+  width: 100%;
+}
+
+
+.updateBox
+{position: absolute;
+  width:250px;
+  height:290px;
+  top:170px;
+  left:26px;
+  background-color: transparent;
+  overflow: hidden;
+  border-radius: 20px;
+  outline:  1px double  whitesmoke;
+  z-index: 29;
+}
+.updateBox form
+{
+  position: center;
+  inset: 4px;
+  background-color: transparent;
+  border-radius: 20px;
+  display:flex;
+  flex-direction: column;
+  z-index: 20;
+  margin:20px;
+
+}
+.updateBox form h2
+{
+  color: #fff;
+  font-weight: 600;
+  text-align: center;
+  letter-spacing: 0.1em;
+}
+
+.select
+{
+  background: #2a2f3b;
+  color:#fff;
+  display: flex;
+  margin-top:18px;
+  margin-bottom: 18px;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px #2a2f3b solid;
+  text-align: center;
+  border-radius: 0.5em;
+  cursor:pointer;
+  transition: backround 0.3s;
+  height: 38px;
+  width:210px;
+}
+.select-clicked
+{
+  border: 2px #26489a solid;
+  box-shadow: 0 0 0 0.8em #26489a ;
+}
+.select:hover
+{
+  background: #323741;
+}
+.updateBox form .inputBox
+{
+  position:relative;
+  width: 200px;
+  top: 0px;
+  height: 30px;
+  left:5px;
+  right:15px;
+
+}
+.updateBox form .inputBox input
+{
+  position:relative;
+  left:20px;
+  bottom: 10px;
+  padding: 35px 10px 10px;
+  background-color:transparent;
+  outline:none;
+  border:none;
+  box-shadow: none;
+  color: Black;
+  font-size: 1em;
+  letter-spacing:0.05em ;
+  transition: 0.5s;
+  z-index: 30;
+}
+.updateBox form .inputBox span
+{
+  position:absolute;
+  left:20%;
+  padding: 20px 0px 10px;
+  pointer-events: none;
+  color: White;
+  font-size: 1em;
+  letter-spacing: 0.05em;
+  transition: 1.5s;
+}
+.updateBox form .inputBox input:valid ~ span,
+.updateBox form .inputBox input:focus ~ span
+{
+  color:White;
+  font-size:80%;
+  transform:translate(-34px) ;
+}
+
+.updateBox form .inputBox i
+{
+  position: absolute;
+  left:0;
+  bottom:0;
+  width:100%;
+  height: 2px;
+  background-color:White ;
+  border-radius: 4px;
+  overflow: hidden;
+  transition:0.5s;
+  pointer-events: none;
+}
+.updateBox form .inputBox input:valid ~ i,
+.updateBox form .inputBox input:focus ~ i
+{
+  height:34px;
+  color:Azure;
+  background-color: white;
+}
+.updateBox form  input[type="submit"]
+{
+  border:none;
+  outline:none;
+  padding:9px 5px;
+  background: linear-gradient(60deg,#e50815,#e50815,
+  #b00612,#b00612,#b00612);;
+  cursor:pointer;
+  font-size:0.9em;
+  border-radius: 4px;
+  font-weight: 600;
+  width:100px ;
+  margin-top:40px;
+  margin-left: 55px;
+  z-index: 10;
+}
+.updateBox form  input[type="submit"]:hover
+{
+  opacity:0.8;
+  animation: animate2 1s ease-in-out infinite;
+  animation-delay: -3s;
+}
+@keyframes animate2 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.lista
+{
+  position: absolute;
+  width:95%;
+  height:100%;
+  top:480px;
+  left:50px;
+  background-color: transparent;
+  overflow: hidden;
+  border-radius: 20px;
+  outline:  1px double  whitesmoke;
+  z-index: 50;
+  flex-direction: column;
+
+}
+.lista mat-list
+{
+  position: relative;
+  inset: 4px;
+  height:2000px;
+  background-color: transparent;
+  border-radius: 20px;
+  display:flex;
+  z-index: 50;
+  bottom:-400px;
+  padding-top: 20px;
+
+}
+.lista mat-list mat-list-item
+{
+  background: #2a2f3b;
+  color:#fff;
+  left:20px;
+  display: flex;
+  flex-flow: column;
+  overflow: visible;
+  margin-top: 24px;
+  margin-right:54px;
+  height: 150px;
+  width:260px;
+  align-items: center;
+  align-content: space-around;
+  border: 2px #2a2f3b solid;
+  text-align: center;
+  border-radius: 0.5em;
+  cursor:pointer;
+  transition: backround 0.3s;
+}
+.deleteBox
+{position: absolute;
+  width:250px;
+  height:290px;
+  top:170px;
+  left:326px;
+  background-color: transparent;
+  overflow: hidden;
+  border-radius: 20px;
+  outline:  1px double  whitesmoke;
+  z-index: 29;
+}
+.deleteBox form
+{
+  position: center;
+  inset: 4px;
+  background-color: transparent;
+  border-radius: 20px;
+  display:flex;
+  flex-direction: column;
+  z-index: 20;
+  margin-top:40px;
+  margin-left:20px;
+
+}
+.deleteBox form h2
+{
+  color: #fff;
+  font-weight: 600;
+  text-align: center;
+  letter-spacing: 0.1em;
+}
+
+.select
+{
+  background: #2a2f3b;
+  color:#fff;
+  display: flex;
+  margin-top:18px;
+  margin-bottom: 18px;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px #2a2f3b solid;
+  text-align: center;
+  border-radius: 0.5em;
+  cursor:pointer;
+  transition: backround 0.3s;
+  height: 38px;
+  width:210px;
+}
+.select-clicked
+{
+  border: 2px #26489a solid;
+  box-shadow: 0 0 0 0.8em #26489a ;
+}
+.select:hover
+{
+  background: #323741;
+}
+.deleteBox form .inputBox
+{
+  position:relative;
+  width: 200px;
+  top: 0px;
+  height: 30px;
+  left:5px;
+  right:15px;
+
+}
+.deleteBox form .inputBox input
+{
+  position:relative;
+  left:20px;
+  bottom: 10px;
+  padding: 20px 10px 10px;
+  background-color:transparent;
+  outline:none;
+  border:none;
+  box-shadow: none;
+  color: Black;
+  font-size: 1em;
+  letter-spacing:0.05em ;
+  transition: 0.5s;
+  z-index: 30;
+}
+.deleteBox form .inputBox span
+{
+  position:absolute;
+  left:20%;
+  padding: 35px 10px 10px;
+  pointer-events: none;
+  color: White;
+  font-size: 1em;
+  letter-spacing: 0.05em;
+  transition: 1.5s;
+}
+.deleteBox form .inputBox input:valid ~ span,
+.deleteBox form .inputBox input:focus ~ span
+{
+  color:White;
+  font-size:80%;
+  transform:translate(-34px) ;
+}
+
+.deleteBox form .inputBox i
+{
+  position: absolute;
+  left:0;
+  bottom:0;
+  width:100%;
+  height: 2px;
+  background-color:White ;
+  border-radius: 4px;
+  overflow: hidden;
+  transition:0.5s;
+  pointer-events: none;
+}
+.deleteBox form .inputBox input:valid ~ i,
+.deleteBox form .inputBox input:focus ~ i
+{
+  height:34px;
+  color:Azure;
+  background-color: white;
+}
+.deleteBox form  input[type="submit"]
+{
+  border:none;
+  outline:none;
+  padding:9px 5px;
+  background: linear-gradient(60deg,#e50815,#e50815,
+  #b00612,#b00612,#b00612);;
+  cursor:pointer;
+  font-size:0.9em;
+  border-radius: 4px;
+  font-weight: 600;
+  width:100px ;
+  margin-top:40px;
+  margin-left: 55px;
+  z-index: 10;
+}
+
+.deleteBox form  input[type="submit"]:hover
+{
+  opacity:0.8;
+  animation: animate2 1s ease-in-out infinite;
+  animation-delay: -3s;
+}
+
+
+.insertBox
+{position: absolute;
+  width:250px;
+  height:430px;
+  top:30px;
+  left:926px;
+  background-color: transparent;
+  overflow: hidden;
+  border-radius: 20px;
+  outline:  1px double  whitesmoke;
+  z-index: 29;
+}
+.insertBox form
+{
+  position: center;
+  inset: 4px;
+  background-color: transparent;
+  border-radius: 20px;
+  display:flex;
+  flex-direction: column;
+  z-index: 20;
+  margin-top:40px;
+  margin-left:20px;
+
+}
+.insertBox form h2
+{
+  color: #fff;
+  font-weight: 600;
+  text-align: center;
+  letter-spacing: 0.1em;
+}
+
+.insertBox form .inputBox
+{
+  position:relative;
+  width: 200px;
+  top: 0px;
+  height: 30px;
+  margin:20px;
+  left:5px;
+  right:15px;
+
+}
+.insertBox form .inputBox input
+{
+  position:relative;
+  left:20px;
+  bottom: 10px;
+  padding: 20px 10px 10px;
+  background-color:transparent;
+  outline:none;
+  border:none;
+  box-shadow: none;
+  color: Black;
+  font-size: 1em;
+  letter-spacing:0.05em ;
+  transition: 0.5s;
+  z-index: 30;
+}
+.insertBox form .inputBox span
+{
+  position:absolute;
+  left:20%;
+  padding: 35px 10px 10px;
+  pointer-events: none;
+  color: White;
+  font-size: 1em;
+  letter-spacing: 0.05em;
+  transition: 1.5s;
+}
+.insertBox form .inputBox input:valid ~ span,
+.insertBox form .inputBox input:focus ~ span
+{
+  color:White;
+  font-size:80%;
+  transform:translate(-34px) ;
+}
+
+.insertBox form .inputBox i
+{
+  position: absolute;
+  left:0;
+  bottom:0;
+  width:100%;
+  height: 2px;
+  background-color:White ;
+  border-radius: 4px;
+  overflow: hidden;
+  transition:0.5s;
+  pointer-events: none;
+}
+.insertBox form .inputBox input:valid ~ i,
+.insertBox form .inputBox input:focus ~ i
+{
+  height:34px;
+  color:Azure;
+  background-color: white;
+}
+.insertBox form  input[type="submit"]
+{
+  border:none;
+  outline:none;
+  padding:9px 5px;
+  background: linear-gradient(60deg,#e50815,#e50815,
+  #b00612,#b00612,#b00612);;
+  cursor:pointer;
+  font-size:0.9em;
+  border-radius: 4px;
+  font-weight: 600;
+  width:100px ;
+  margin-top:40px;
+  margin-left: 55px;
+  z-index: 10;
+}
+
+.insertBox form  input[type="submit"]:hover
+{
+  opacity:0.8;
+  animation: animate2 1s ease-in-out infinite;
+  animation-delay: -3s;
+}
+.butonas
+{
+  z-index:90;
+  color:#fff;
+  top:-670px;
+  right:-700px;
+}
+.butonas1
+{
+  z-index:90;
+  color:#fff;
+  top:-715px;
+  right:-656px;
+}
+.statusBox
+{position: absolute;
+  width:900px;
+  height:450px;
+  top:63px;
+  left:300px;
+  background-color: black;
+  border-radius: 20px;
+  outline:  1px double  whitesmoke;
+  z-index: 129;
+  visibility: hidden;
+  font-family: sans-serif;
+  box-shadow:  0 .4rem .8rem #0005;
+  overflow: hidden;
+
+}
+.statusBox .table_header{
+  position: relative;
+  color:white;
+  font-weight: bold;
+  font-size: 15px;
+  margin-left:340px;
+  z-index: 130;
+}
+
+thead{
+  position: relative;
+  color:white;
+  font-weight: bold;
+  font-size: 15px;
+  z-index: 135;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr; /* set the number of columns and their widths */
+  grid-gap: 10px; /* set the gap between cells */
+}
+thead th{
+  padding: 35px;
+  text-align: left;
+}
+tbody{
+  background-color: #8f8f8f;
+  position: relative;
+  margin-left: -20px;
+  color:white;
+  font-weight: bold;
+  font-size: 15px;
+  z-index: 135;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr; /* set the number of columns and their widths */
+  grid-gap: 10px; /* set the gap between cells */
+}
+tbody:hover
+{
+  background-color: darkseagreen;
+}
+tbody th{
+  text-align: right;
+  padding-left: 40px;
+  padding-right: 40px;
+  overflow: auto;
+}
+
+.nume
+{  position: relative;
+  margin-left: 20px;
+}
+.prenume
+{  position: relative;
+  left: 10px;
+}
+.password
+{  position: relative;
+  left: 35px;
+}
+.email
+{  position: relative;
+  left: 55px;
+}
+.age
+{  position: relative;
+  left: 65px;
+}
+.status {
+  position: relative;
+  left: 65px;
+  width: 300px; /* adjust width as needed */
+  text-align: left;
+  padding: 0;
+}
+

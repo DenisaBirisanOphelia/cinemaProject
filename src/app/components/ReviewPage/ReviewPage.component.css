@@ -1,0 +1,139 @@
+*{
+margin:0px;
+  padding: 0px;
+  font-family: poppins;
+  box-sizing: border-box;
+}
+a
+{
+  text-decoration: none;
+}
+#testimonials
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+.testimonial-heading
+{
+  letter-spacing: 1px;
+  margin: 30px 0px;
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.testimonial-heading h1
+{
+  font-size: 2.2rem;
+  font-weight: 500;
+  background-color: #202020;
+  color:#ffffff;
+  padding: 10px 20px;
+}
+
+.testimonial-heading span{
+  font-size: 1.3rem;
+  color:#252525;
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.testimonial-box-container
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.testimonial-box
+{
+  width:500px;
+  box-shadow: 2px 2px 30px rgba(0,0,0,0.1);
+  background-color: #ffffff;
+  padding: 20px;
+  margin: 15px;
+  cursor: pointer;
+}
+.profile-img
+{
+  width:50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 10px;
+}
+.profile-img img
+{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.profile
+{
+  display: flex;
+  align-items: center;
+}
+.name-username
+{
+  display: flex;
+  flex-direction: column;
+}
+.name-username strong
+{
+  color:#3d3d3d;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+}
+ .movie span{
+  color:#979797;
+  font-size: 0.8rem;
+  float: left;
+}
+.reviews
+{
+  color:yellow;
+}
+.box-top
+{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.comment p{
+  font-size: 0.9rem;
+  color:#4b4b4b;
+}
+.testimonial-box:hover
+{
+  transform: translateY(-10px);
+  transition: all ease 0.3s;
+}
+.movie{
+  margin-top:10px;
+}
+ .movie img
+{
+  width:50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 10px;
+  left:60px;
+   margin-left: 10px;
+   margin-top:-10px;
+}
+.name-username span{
+  color:#979797;
+  font-size: 0.8rem;
+}
+.rating
+{
+  color:#f9d71c;
+}

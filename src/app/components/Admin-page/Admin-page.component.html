@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html Lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link rel="stylesheet" href="Admin-page.component.css">
+</head>
+<body>
+<button  mat-icon-button id="status" class="butonas">
+  <mat-icon>account_circle</mat-icon>
+</button>
+<button  mat-icon-button class="butonas1" (click)="showXML()">
+  <mat-icon>cloud_download</mat-icon>
+</button>
+<div class="updateBox">
+  <form [formGroup]="updateForm" *ngIf="updateForm">
+    <h2>Update a movie</h2>
+    <div class="inputBox">
+      <input  formControlName="nume"  [(ngModel)]="nume" type="text"  required="required" />
+      <span>Choice </span>
+      <i></i>
+    </div>
+    <select class="select" formControlName="updateOption" [(ngModel)]="updateOption"  >
+      <option *ngFor="let item of filterMainData" [ngValue]="item">{{item}}</option>
+    </select>
+    <div class="inputBox">
+      <input  formControlName="newValue"  [(ngModel)]="newValue" type="text"  required="required" />
+      <span>New value </span>
+      <i></i>
+    </div>
+    <input type="submit"  (click)=update()  value="Update">
+  </form>
+</div>
+<div class="statusBox" id="statusBox">
+  <div class="table_header">
+    <h1>Clients' status</h1>
+  </div>
+  <div class="table_body">
+    <table>
+      <thead>
+      <tr>
+        <th>id</th>
+        <th>Nume</th>
+        <th>Prenume</th>
+        <th>Password</th>
+        <th>Email</th>
+        <th>Age</th>
+        <th>Logged in</th>
+      </tr>
+      </thead>
+      <tbody >
+      <mat-list >
+        <mat-list-item *ngFor="let client of clientList">
+          <th>{{client.id}}</th>
+          <th class="nume">{{client.nume}}</th>
+          <th class="prenume">{{client.prenume}}</th>
+          <th class="password">{{client.password}}</th>
+          <th class="email">{{client.email}}</th>
+          <th class="age">{{client.age}}</th>
+          <th class="status">{{isLogged(client.loggedClient)}}</th>
+        </mat-list-item>
+      </mat-list>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="deleteBox">
+  <form [formGroup]="deleteForm" *ngIf="deleteForm">
+    <h2>Delete a movie</h2>
+    <div class="inputBox">
+      <input  formControlName="deleteField"  [(ngModel)]="deleteField" type="text"  required="required" />
+      <span>Choice</span>
+      <i></i>
+    </div>
+    <select class="select" formControlName="deleteOption" [(ngModel)]="deleteOption" >
+      <option *ngFor="let item of filterMainData" [ngValue]="item">{{item}} </option>
+    </select>
+    <input type="submit"  (click)=delete()  value="Delete">
+  </form>
+</div>
+
+<div class="insertBox">
+  <form [formGroup]="insertForm" *ngIf="insertForm">
+    <h2>Insert a movie</h2>
+    <div class="inputBox">
+      <input  formControlName="numeFilm"  [(ngModel)]="numeFilm" type="text"  required="required" />
+      <span>Nume Film</span>
+      <i></i>
+    </div>
+    <div class="inputBox">
+      <input  formControlName="regizor"  [(ngModel)]="regizor" type="text"  required="required" />
+      <span>Regizor</span>
+      <i></i>
+    </div>
+    <div class="inputBox">
+      <input  formControlName="rating"  [(ngModel)]="rating" type="text"  required="required" />
+      <span>Rating</span>
+      <i></i>
+    </div>
+    <input type="submit"  (click)=add()  value="Insert">
+    </form>
+</div>
+<div class="lista">
+  <mat-list>
+    <mat-list-item *ngFor="let movie of movieList">
+      <div mat-line>Nume film:{{movie.name}}</div>
+      <div mat-line>Regizor:{{movie.regizor}}</div>
+      <div mat-line>Rating:{{movie.rating}}</div>
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==" alt="Red dot" />
+    </mat-list-item>
+  </mat-list>
+</div>
+</body>
+</html>
+

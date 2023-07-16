@@ -1,0 +1,66 @@
+.popup
+{ position: absolute;
+  outline: 0.5em double Black  ;
+  height:250px;
+  left:170px;
+  border-radius: 30px;
+  top:400px;
+  min-width: 220px;
+  margin-left: 100px;
+  margin-top:-205px;
+  z-index:30;
+  background:Black;
+  overflow: visible;
+  visibility: hidden;
+}
+popup .open-popup
+{
+  visibility: visible;
+}
+popup .close-popup
+{
+  visibility: hidden;
+}
+.popup img
+{  position: relative;
+  width:30px;
+  margin-top:-100px;
+  margin-left:100px;
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  z-index:34;
+}
+.popup h2
+{
+  color:whitesmoke;
+  margin-left:60px;
+}
+.popup p
+{ position: relative;
+  top:40px;
+  left:40px;
+  color:whitesmoke;
+}
+.popup input[type="submit"]
+{
+  margin-left: 80px;
+  margin-top: 80px;
+  border:none;
+  outline:none;
+  padding:0px 5px;
+  background: linear-gradient(60deg,#e50815,#e50815,
+  #b00612,#b00612,#b00612);;
+  cursor:pointer;
+  font-size:0.9em;
+  border-radius: 4px;
+  font-weight: 600;
+  width:70px ;
+  height: 40px;
+  z-index: 10;
+}
+.popup  input[type="submit"]:hover
+{
+  opacity:0.8;
+  animation: animate2 1s ease-in-out infinite;
+  animation-delay: -3s;
+}

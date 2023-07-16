@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html Lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link rel="stylesheet" href="SingUp-page.component.css">
+</head>
+<body>
+<div class="logo">
+    <div class="netflix">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  <iframe width="560" height="315"
+          src="https://www.youtube.com/embed/cFS4Zcd_kb8?autoplay=1"
+          title="YouTube video player" frameborder="0"
+          style="display:none"
+          allow="accelerometer; autoplay;
+          clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen></iframe>
+
+  <h3>Wanna join?</h3>
+  <div class="cup">
+  <div class="top"> </div>
+    <div class="circle"></div>
+    <div class="tea"></div>
+    <div class="handle"></div>
+    <div class="vapour">
+      <span style="--i:1;"></span>
+      <span style="--i:3;"></span>
+      <span style="--i:16;"></span>
+      <span style="--i:5;"></span>
+      <span style="--i:13;"></span>
+      <span style="--i:20;"></span>
+      <span style="--i:6;"></span>
+      <span style="--i:7;"></span>
+      <span style="--i:10;"></span>
+      <span style="--i:8;"></span>
+      <span style="--i:17;"></span>
+      <span style="--i:12;"></span>
+      <span style="--i:14;"></span>
+      <span style="--i:2;"></span>
+      <span style="--i:9;"></span>
+      <span style="--i:15;"></span>
+      <span style="--i:4;"></span>
+      <span style="--i:19;"></span>
+      <span style="--i:11"></span>
+    </div>
+  </div>
+  <div class="box">
+  <form [formGroup]="signupForm" *ngIf="signupForm">
+    <h2>Register</h2>
+    <div class="inputBox">
+      <input type="text" formControlName="nume"   [(ngModel)]="nume" required="required">
+      <span> Nume </span>
+      <mat-error *ngIf="signupForm.controls['nume']?.touched && signupForm.controls['nume']?.invalid">
+        <span *ngIf="signupForm.controls['nume']?.errors?.['required']" class="invalidNume"><br>Required  field</span>
+      </mat-error>
+      <i></i>
+    </div>
+    <div class="inputBox">
+      <input type="text" formControlName="prenume"   [(ngModel)]="prenume" required="required">
+      <span> Prenume </span>
+      <mat-error *ngIf="signupForm.controls['prenume']?.touched && signupForm.controls['prenume']?.invalid">
+        <span *ngIf="signupForm.controls['prenume']?.errors?.['required']" class="invalidNume"><br>Required  field</span>
+      </mat-error>
+      <i></i>
+    </div>
+    <div class="inputBox">
+      <input type="password"  formControlName="password"   [(ngModel)]="password" required="required">
+      <span> Password </span>
+      <mat-error *ngIf="signupForm.controls['password']?.touched && signupForm.controls['password']?.invalid">
+        <span *ngIf="signupForm.controls['password']?.errors?.['required']" class="invalidNume"><br>Required  field</span>
+      </mat-error>
+      <i></i>
+    </div>
+    <div class="inputBox">
+      <input type="password"  formControlName="repeatPassword"   [(ngModel)]="repeatPassword" required="required">
+      <span> Repeat Password </span>
+      <mat-error *ngIf="signupForm.controls['repeatPassword']?.touched && signupForm.controls['repeatPassword']?.invalid">
+         <span *ngIf="signupForm.controls['repeatPassword']?.errors?.['required']" class="invalidNume"><br>Required field</span>
+        <span *ngIf="signupForm.controls['repeatPassword']?.errors?.['invalidRepPass']" class="invalidNume"><br>Passwords don't match</span>
+      </mat-error>
+      <i></i>
+    </div>
+    <div class="inputBox">
+      <input type="text"  formControlName="email"   [(ngModel)]="email" required="required">
+      <span>Email address</span>
+      <mat-error *ngIf="signupForm.controls['email']?.touched && signupForm.controls['email']?.invalid">
+        <span *ngIf="signupForm.controls['email']?.errors?.['required']" class="invalidNume"><br>Required field</span>
+        <span *ngIf="signupForm.controls['email']?.errors?.['invalidEmail']" class="invalidNume"><br>Please enter a valid email address</span>
+      </mat-error>
+      <i></i>
+    </div>
+    <div class="links">
+      <a (click)=signup()>Register</a>
+    </div>
+  </form>
+</div>
+</div>
+</body>
+</html>

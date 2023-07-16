@@ -1,0 +1,351 @@
+
+body
+{
+  margin:0;
+  padding:0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #000;
+  overflow: hidden;
+}
+.netflix
+{
+  position: relative;
+  width: 360px;
+  height: 520px;
+  overflow: hidden;
+  transform: scale(.8);
+}
+.netflix:before
+{  content: '';
+  position: absolute;
+  left:0;
+  bottom:-100px;
+  width:100%;
+  height:120px ;
+  background: #000;
+  z-index:2;
+  border-top-left-radius: 100%;
+  border-top-right-radius: 100%;
+  transform: scaleX(1.5);
+}
+.netflix:after,h3:before {
+  content: '';
+  position: absolute;
+  top:0;
+  right:0;
+  width:400%;
+  height:100%;
+  background: linear-gradient(to right, transparent,#000,#000);
+z-index:3;
+  animation: animate 2s linear forwards;
+}
+@keyframes animate {
+  0%
+  {
+    right:0;
+  }
+  100%
+  {
+    right:-400%;
+  }
+}
+.netflix span
+{
+  position: absolute;
+  top:0;
+  width:120px;
+  height: 100%;
+  background-color: white;
+}
+.netflix span:nth-child(1)
+{
+  background: #b00612;
+  left:0;
+}
+.netflix span:nth-child(2)
+{
+  background: #e50815;
+  left:0;
+  z-index: 1;
+  transform-origin: top left;
+  transform: skewX(24.8deg);
+  box-shadow: 0 0 40px rgba(0,0,0,1);
+}
+.netflix span:nth-child(3)
+{
+  background: #b00612;
+  right:0;
+}
+h3
+{
+  position: relative;
+  margin-left:-80px;
+  margin-top:0px;
+  padding-left: 30px;
+  text-align: center;
+  font-family: arial, serif;
+  color:#fff;
+font-size:25px;
+  text-transform: UPPERCASE;
+  letter-spacing: 10px;
+  animation: blinker 5s linear infinite;
+  overflow: hidden;
+}
+@keyframes blinker {
+ 50%
+ { transform: skewX(2deg);
+   opacity:0;
+ }
+}
+.cup
+{
+  position: relative;
+  width: 38px;
+  height:35px;
+  margin-top: -54px;
+  margin-left: 370px;
+  background: white;
+  border-bottom-left-radius: 45%;
+
+  border-bottom-right-radius: 45%;
+}
+.top
+{
+  position:relative;
+  top:-8px;
+  left:0px;
+  width:100%;
+  height: 13px;
+  background: linear-gradient( to right,#f9f9f9,#d9d9d9);
+  border-radius: 60%;
+  z-index: 2;
+}
+.circle
+{
+  position: relative;
+  top:-20px;
+  left:0px;
+  width:calc(100%- 20px);
+  height: 40px;
+  border-radius:50%;
+  background: linear-gradient( to left,#f9f9f9,#d9d9d9);
+}
+.tea
+{
+  position: relative;
+  top:-56px;
+  left:1px;
+  width:96%;
+  height: 8px;
+  border-radius:60%;
+  background: linear-gradient(#c57e65,#e28462);
+  z-index: 2;
+}
+.handle
+{ background: transparent;
+  position:relative;
+  right:-13px;
+  top:-62px;
+  width:2px;
+  height:5px;
+  border: 4px solid #dcdcdc;
+  border-left: 24px solid transparent;
+  border-bottom: 24px solid transparent;
+  border-radius: 70%;
+  transform: rotate(42deg);
+}
+.vapour
+{ background: transparent;
+  position: absolute;
+  right:-2px;
+  top:-3px;
+  width:0px;
+  height:4px;
+  display: flex;
+  z-index: 4;
+  padding:0 20px;
+}
+.vapour span
+{
+  position: relative;
+  bottom: 100px;
+  left:-30px;
+  display: block;
+  margin:0 0.1em;
+  min-width: 0.05em;
+  height: 100px;
+  background: #fff;
+  border-radius: 98%;
+  opacity: 0;
+  filter:blur(8px);
+  animation-delay: calc(var(--i)*-1s);
+  animation: animate3 6s linear infinite;
+}
+@keyframes animate3 {
+  0%
+  {
+    transform: translateY(0px) scaleX(1);
+    opacity: 0;
+  }
+  15%
+  {
+    opacity: 1;
+  }
+  50%
+  {
+    transform: translateY(0px) scaleX(5);
+  }
+  60%
+  {
+    transform: translateY(0px) scaleX(6);
+  }
+  75%
+  {
+    transform: translateY(0px) scaleX(8);
+  }
+  95%
+  {
+    opacity:0 ;
+  }
+  100%
+  {
+    transform: translateY(-300px) scaleX(10);
+  }
+}
+.box
+{position: absolute;
+  width:250px;
+  height:430px;
+  top:150px;
+  left:156px;
+  background-color: transparent;
+  overflow: hidden;
+  border-radius: 20px;
+  outline:  1px double  whitesmoke;
+  z-index: 9;
+}
+.box, .box form,.box form .inputBox{
+  z-index: 9;
+}
+.box form
+{
+  position: center;
+  inset: 4px;
+  background-color: transparent;
+  border-radius: 20px;
+  display:flex;
+  flex-direction: column;
+
+}
+.box form h2
+{
+  color: #fff;
+  font-weight: 200;
+  text-align: center;
+  letter-spacing: 0.1em;
+}
+.box form .inputBox
+{
+  position:relative;
+  width: 50%;
+  height: 60%;
+  margin-top: 10px;
+  margin-left:60px;
+}
+.box form .inputBox input
+{
+  position:relative;
+  width:150px;
+  height:10px;
+  margin-left: -24px;
+  padding: 10px 10px 10px;
+  background-color:white;
+  outline-color: transparent;
+  color: Black;
+  font-size: 1em;
+  letter-spacing:0.05em ;
+  transition: 0.5s;
+  z-index: 10;
+  overflow: hidden;
+}
+.box form .inputBox span
+{
+  position:relative;
+  left:20%;
+
+  pointer-events: none;
+  color: White;
+  font-size: 1em;
+  letter-spacing: 0.05em;
+  transition: 1.5s;
+}
+.box form .inputBox input:valid ~ span,
+.box form .inputBox input:focus ~ span
+{
+  color:transparent;
+  font-size:70%;
+  transform:translate(-34px) ;
+}
+
+box form .inputBox i
+{
+  position: absolute;
+  left:0;
+  bottom:0;
+  width:100%;
+  height: 2px;
+  background-color:transparent ;
+  border-radius: 4px;
+  overflow: hidden;
+  transition:0.5s;
+  pointer-events: none;
+}
+.box form .inputBox input:valid ~ i,
+.box form .inputBox input:focus ~ i
+{
+  height:34px;
+  color:Azure;
+  background-color: white;
+}
+.box form  a
+ { position: center;
+   border:none;
+   outline:none;
+  display: flex;
+   background: transparent;
+   cursor:pointer;
+   font-size:0.9em;
+   border-radius: 4px;
+   font-weight: 600;
+   width:100px ;
+  height: 25px;
+   margin-top:15px;
+  margin-left:50px;
+  text-align: center;
+  text-decoration: none;
+  padding-left: 50px;
+  padding-top: 7px;
+ }
+.box form a:hover
+{
+  color: white;
+  outline: 1px solid whitesmoke  ;
+
+}
+a:visited,active
+{
+  color:White;
+}
+.box form .inputBox .invalidNume{
+  color:red;
+left:10px;
+}
+
+
+
+
+
+
